@@ -23,13 +23,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.alekseykostyunin.timercoroutine.ui.theme.TimerCoroutineTheme
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private var viewModel: TimerViewModel = TimerViewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Внедрение зависимостей через Koin
+        val viewModel: TimerViewModel = getViewModel()
+
         enableEdgeToEdge()
         setContent {
             TimerCoroutineTheme {
